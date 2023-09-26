@@ -1,5 +1,5 @@
-*/tmp/*
-!*/tmp/.gitkeep
+tmp/*
+!tmp/.gitkeep
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
