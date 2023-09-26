@@ -30,21 +30,20 @@ This is my own implementation based on the bigram model, but configurable to use
 #### Implementation Pseudocode:
 
 ```python
-n = 10
-embed_size = vocab_size + 10 * n
-token_embedding = Embedding(vocab_size, embed_size, padding_idx=0)
+n, embed_size = 10, 160
+token_embedding = nn.Embedding(vocab_size, embed_size)
 pos_embedding = ... # parameter, shape (n, embed_size)
 adding_weight = ... # parameter, shape (n,)
 fc = nn.Linear(embed_size, 200)
 relu = nn.ReLU()
 final = nn.Linear(200, vocab_size)
 
-x = token_embedding(x), + pos_embedding
-x = F.softmax(adding_weight, -1) @ x
+input_tokens = ... # shape (n,)
+x = token_embedding(input_tokens) + pos_embedding
+x = softmax(adding_weight) @ x
 x = fc(x)
 x = relu(x)
-x = final(x)
-return x
+output = final(x) # shape (vocab_size,)
 ```
 
 #### Sample Output
